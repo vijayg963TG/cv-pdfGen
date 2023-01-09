@@ -28,19 +28,25 @@ body {
   line-height: 1.5;
 }
 
-ul{
+ul {
   margin: 1.5rem 0;
 }
 
-li{
+strong,
+li {
   text-transform: capitalize;
 }
 
-.language-list{
+.language-list {
   margin: 1rem 0;
 }
 
-.contact-sec p{
+.app {
+  border: 1px solid lightgray;
+  padding-left: 1rem;
+}
+
+.contact-sec p {
   display: flex;
   gap: 1rem;
   font-size: 1.2rem;
@@ -49,11 +55,11 @@ li{
   margin: 0rem;
 }
 
-.contact-sec p strong{
+.contact-sec p strong {
   font-size: 1.6rem;
 }
 
-.language{
+.language {
   display: block;
   font-size: 1.4rem;
   line-height: 1.4;
@@ -62,7 +68,7 @@ li{
   font-weight: 500;
 }
 
-.textDark{
+.textDark {
   font-size: 1.2rem;
   color: #656363;
   font-weight: 500;
@@ -75,8 +81,9 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #3080c2;
   cursor: pointer;
+  color: white;
   transition: border-color 0.25s;
 }
 button:hover {
@@ -87,19 +94,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.left-part{
+.left-part {
   box-sizing: border-box;
   padding: 2rem 1rem;
   margin-right: 2.8rem;
 }
 
-.right-part{
+.right-part {
   box-sizing: border-box;
   background-color: #f3f3f3;
   padding: 2rem 1rem;
 }
 
-.logo-img{
+.logo-img {
   padding: 1.2rem;
   text-align: center;
   box-sizing: border-box;
@@ -108,39 +115,38 @@ button:focus-visible {
   margin-bottom: 1rem;
 }
 
-
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-65{
-  flex: 0 1 65% ;
+.flex-65 {
+  flex: 0 1 65%;
 }
 
-.flex-35{
-  flex:  0 1 35%;
+.flex-35 {
+  flex: 0 1 35%;
 }
 
-.sideborder{
+.sideborder {
   border: 1px solid gray;
   margin: 10px 16px;
 }
 
-.details-sec{
+.details-sec {
   position: relative;
 }
 
-.circle { 
+.circle {
   position: absolute;
   left: -26px;
   top: 7px;
   border-radius: 50%;
   width: 1rem;
   height: 1rem;
-  background: lightgray;
+  background: gray !important;
 }
 
-.contact-details{
+.contact-details {
   padding: 1.5rem 0;
 }
 
@@ -157,3 +163,62 @@ button:focus-visible {
   }
 } */
 
+/* Loader  */
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -16px, 0);
+  }
+}
+
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+
+.bouncing-loader > div {
+  width: 16px;
+  height: 16px;
+  margin: 3rem 0.2rem;
+  background: #8385aa;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+@media screen and (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}

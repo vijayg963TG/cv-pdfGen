@@ -2,32 +2,33 @@ import React from "react";
 import { Header } from "../components/Header";
 import { Title } from "./Title";
 
-export const Details = ({ name, summary, education, projects }) => {
-  // console.log(name, summary, education, projects);
+export const Details = ({ name, post, summary, education, projects }) => {
+  // console.log(name,post, summary, education, projects);
   return (
+    <>
     <div className="left-part flex-65">
-      <Header name={name} post={"WordPress Developer"} />
+      <Header name={name} post={post} />
       <div className="flex">
         <div className="sideborder"></div>
         <div>
           <div className="details-sec">
-            <div class="circle"></div> <Title title={"Summary"} />
+            <div className="circle"></div> <Title title={"Summary"} />
             <p className="textDark">{summary}</p>
-            <br/><br/><br/><br/><br/>
+            <br/><br/><br/>
           </div>
-          <div className="details-sec">
-            <div class="circle"></div> <Title title={"Education"} />
+         {education &&  <div className="details-sec">
+            <div className="circle"></div> <Title title={"Education"} />
             <p className="textDark">- {education}</p>
             <br/><br/>
-          </div>
+          </div>}
           <div className="details-sec">
-            <div class="circle"></div>
+            <div className="circle"></div>
             <Title title={"Projects"} />
             <p className="textDark">-{projects}</p>
-            <br/><br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 };

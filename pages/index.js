@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import { Footer } from "../components/Footer";
 const inter = Inter({ subsets: ["latin"] });
-import { Technologic } from "../components/Technologic";
+import { Technology } from "../components/Technology";
 import { Details } from "../components/Details";
+import { BtnHeader } from "../components/BtnHeader";
 import axios from "axios";
-const URL = "http://localhost:5000/api/getPdf/63b408f1562a8c1fde6598bc";
+import { Loader } from "../components/Loader";
+
+export const ApiContext = createContext()
+// export default DataContext;
+
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
+
+  let id = "63bbc865895e59f6fd4b67f7";
+  // let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63b8084842c4521902050d1a"
+  const URL = `http://localhost:5000/api/getPdf/${id}`;
 
   useEffect(() => {
     axios(URL)
@@ -18,9 +27,11 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, []);
 
-if(!apiData){
-  return "Loading..."
-}
+   console.log(apiData)
+
+  if (!apiData) {
+    return <Loader />;
+  }
   return (
     <>
       <Head>
@@ -29,13 +40,16 @@ if(!apiData){
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.main}>
-        <div className="flex app">
-          <Details {...apiData} />
-          <Technologic {...apiData} />
+    <ApiContext.Provider value={apiData}>
+        <div className={styles.main}>
+          <BtnHeader {...apiData} />
+          <div className="flex app">
+            <Details {...apiData} />
+            <Technology {...apiData} />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+    </ApiContext.Provider>
     </>
   );
 }
