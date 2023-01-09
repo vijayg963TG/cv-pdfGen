@@ -11,15 +11,13 @@ import axios from "axios";
 import { Loader } from "../components/Loader";
 
 export const ApiContext = createContext()
-// export default DataContext;
-
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
 
-  let id = "63bbc865895e59f6fd4b67f7";
-  // let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63b8084842c4521902050d1a"
-  const URL = `http://localhost:5000/api/getPdf/${id}`;
+ let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63bc0145895e59f6fd4b6843"
+
+  const URL = `http://localhost:5000/api/getPdf/${getId}`;
 
   useEffect(() => {
     axios(URL)
@@ -27,7 +25,7 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, []);
 
-   console.log(apiData)
+  //  console.log(apiData)
 
   if (!apiData) {
     return <Loader />;

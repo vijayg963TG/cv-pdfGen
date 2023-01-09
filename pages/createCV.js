@@ -43,7 +43,8 @@ export default function createCV() {
           contactUs: "",
         }}
         onSubmit={async (values) => {
-          console.log(values);
+          // here All the values in Obj Form 
+          // console.log(values);
           let formData = new FormData();
           formData.append("name", values.name);
           formData.append("post", values.post);
@@ -66,19 +67,19 @@ export default function createCV() {
             .then((res) => setPostCV(() => res.data))
             .catch((err) => console.error(err));
 
+            alert("Form submitted!");
           console.log(postCV);
           localStorage.setItem("id", postCV.id);
-          alert("Form submitted!");
-          {
-            console.log(formData.get("name"));
-            console.log(formData.get("summary"));
-            console.log(formData.get("education"));
-            console.log(formData.get("projects"));
-            console.log(formData.get("skills"));
-            console.log(formData.get("tools"));
-            console.log(formData.get("langaugeSkills"));
-            console.log(formData.get("contactUs"));
-          }
+          // {
+          //   console.log(formData.get("name"));
+          //   console.log(formData.get("summary"));
+          //   console.log(formData.get("education"));
+          //   console.log(formData.get("projects"));
+          //   console.log(formData.get("skills"));
+          //   console.log(formData.get("tools"));
+          //   console.log(formData.get("langaugeSkills"));
+          //   console.log(formData.get("contactUs"));
+          // }
         }}
         validationSchema={CvSchema}
         render={({
