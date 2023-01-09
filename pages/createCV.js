@@ -64,12 +64,13 @@ export default function createCV() {
           // Do whatever on the sever
           axios
             .post("http://localhost:5000/api/createPdf", values)
-            .then((res) => setPostCV(() => res.data))
+            .then((res) => localStorage.setItem("id", res.data.id))
             .catch((err) => console.error(err));
+            
+
 
             alert("Form submitted!");
           console.log(postCV);
-          localStorage.setItem("id", postCV.id);
           // {
           //   console.log(formData.get("name"));
           //   console.log(formData.get("summary"));

@@ -14,15 +14,19 @@ export const ApiContext = createContext()
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
+const [getID, setGetID] = useState("63bc0145895e59f6fd4b6843")
 
- let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63bc0145895e59f6fd4b6843"
-
-  const URL = `http://localhost:5000/api/getPdf/${getId}`;
+  
 
   useEffect(() => {
-    axios(URL)
+    if(window !== undefined){
+let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63bc0145895e59f6fd4b6843"
+const URL = `http://localhost:5000/api/getPdf/${getId}`;
+axios(URL)
       .then((res) => setApiData(res.data.data))
       .catch((err) => console.error(err));
+    }
+    
   }, []);
 
   //  console.log(apiData)
