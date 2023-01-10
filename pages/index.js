@@ -10,26 +10,22 @@ import { BtnHeader } from "../components/BtnHeader";
 import axios from "axios";
 import { Loader } from "../components/Loader";
 
-export const ApiContext = createContext()
+// export const ApiContext = createContext();
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
-const [getID, setGetID] = useState("63bc0145895e59f6fd4b6843")
-
-  
+  const [getID, setGetID] = useState("");
+  const URL = `https://pdf-creator-ecru.vercel.app/api/getPdf/${getID}`;
 
   useEffect(() => {
-    if(window !== undefined){
-let getId = localStorage.getItem("id") ? localStorage.getItem("id") : "63bc0145895e59f6fd4b6843"
-const URL = `http://localhost:5000/api/getPdf/${getId}`;
-axios(URL)
-      .then((res) => setApiData(res.data.data))
-      .catch((err) => console.error(err));
+    setGetID(localStorage.getItem("id") || "63bd0c874abf48ced5b1cfbe");
+    if (window !== undefined) {
+      axios(URL)
+        .then((res) => setApiData(res.data.data))
+        .catch((err) => console.error(err));
     }
-    
-  }, []);
-
-  //  console.log(apiData)
+  }, [getID]);
+  // console.log(getID ,"Check id")
 
   if (!apiData) {
     return <Loader />;
@@ -42,16 +38,16 @@ axios(URL)
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <ApiContext.Provider value={apiData}>
+      {/* <ApiContext.Provider value={apiData}> */}
         <div className={styles.main}>
-          <BtnHeader {...apiData} />
+          <BtnHeader id={getID} />
           <div className="flex app">
             <Details {...apiData} />
             <Technology {...apiData} />
           </div>
           <Footer />
         </div>
-    </ApiContext.Provider>
+      {/* </ApiContext.Provider> */}
     </>
   );
 }

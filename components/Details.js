@@ -13,18 +13,18 @@ export const Details = ({ name, post, summary, education, projects }) => {
         <div>
           <div className="details-sec">
             <div className="circle"></div> <Title title={"Summary"} />
-            <p className="textDark">{summary}</p>
+            <p contentEditable="true" suppressContentEditableWarning={true} className="textDark">{summary}</p>
             <br/><br/><br/>
           </div>
          {education &&  <div className="details-sec">
             <div className="circle"></div> <Title title={"Education"} />
-            <p className="textDark">- {education}</p>
+            <p contentEditable="true" suppressContentEditableWarning={true} className="textDark">- {education}</p>
             <br/><br/>
           </div>}
           <div className="details-sec">
             <div className="circle"></div>
             <Title title={"Projects"} />
-            <p className="textDark">-{projects}</p>
+            <p contentEditable="true" suppressContentEditableWarning={true} className="textDark">-{projects}</p>
           </div>
         </div>
       </div>

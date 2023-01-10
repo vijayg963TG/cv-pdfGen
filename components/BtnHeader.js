@@ -4,14 +4,20 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 // import {PDFDownloadLink} from "@react-pdf/render"
 
-export const BtnHeader = ({ id, children }) => {
+export const BtnHeader = ({ id }) => {
+  // console.log("63bd0c874abf48ced5b1cfbe check", id);
   const [loading, setloading] = useState(true);
-  const handleDelete = () => {
-    axios
-      .delete(`http://localhost:5000/api/deletPdf/${id}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-  };
+  // const handleDelete = () => {
+  //   if("63bd0c874abf48ced5b1cfbe"){
+  //     console.log("Default Data", id);
+  //   }else{
+  //     console.log("else Data", id);
+  //     axios
+  //     .delete(`https://pdf-creator-ecru.vercel.app/api/deletPdf/${id}`)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.error(err));
+  //   }
+  // };
 
   function print() {
     window.print();
@@ -19,8 +25,8 @@ export const BtnHeader = ({ id, children }) => {
 
   const downloadPdf = () => {
     setloading(false);
-    setTimeout(print, 2000);
-    setTimeout(() => setloading(true), 4000);
+    setTimeout(print, 500);
+    setTimeout(() => setloading(true), 2500);
   };
   if (loading)
     return (
@@ -29,9 +35,9 @@ export const BtnHeader = ({ id, children }) => {
           <button>Create CV</button>
         </Link>
         <button onClick={downloadPdf}>Download</button>
-        <Link href={"/createCV"}>
+        {/* <Link href={"/createCV"}>
           <button onClick={handleDelete}>Delete CV</button>
-        </Link>
+        </Link> */}
       </div>
     );
 };

@@ -16,7 +16,7 @@ const CvSchema = Yup.object().shape({
     .required("Required"),
   summary: Yup.string()
     .min(40, "Too Short!")
-    .max(500, "Too Long!")
+    .max(2000, "Too Long!")
     .required("Required"),
   education: Yup.string(),
   projects: Yup.string().min(10, "Too Short").required("Required"),
@@ -43,7 +43,7 @@ export default function createCV() {
           contactUs: "",
         }}
         onSubmit={async (values) => {
-          // here All the values in Obj Form 
+          // here All the values in Obj Form
           // console.log(values);
           let formData = new FormData();
           formData.append("name", values.name);
@@ -63,11 +63,9 @@ export default function createCV() {
           // const res = await fetch("posturl", { method: "POST", body: formData });
           // Do whatever on the sever
           axios
-            .post("http://localhost:5000/api/createPdf", values)
+            .post("https://pdf-creator-ecru.vercel.app/api/createPdf", values)
             .then((res) => localStorage.setItem("id", res.data.id))
             .catch((err) => console.error(err));
-            
-
 
             alert("Form submitted!");
           console.log(postCV);
