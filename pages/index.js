@@ -18,7 +18,7 @@ export default function Home() {
   const URL = `https://pdf-creator-ecru.vercel.app/api/getPdf/${getID}`;
 
   useEffect(() => {
-    setGetID(localStorage.getItem("id") || "63bd0c874abf48ced5b1cfbe");
+    setGetID(localStorage.getItem("id") || "63bd45891ce32929371313d4");
     if (window !== undefined) {
       axios(URL)
         .then((res) => setApiData(res.data.data))

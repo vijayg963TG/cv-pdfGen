@@ -101,6 +101,7 @@ button:focus-visible {
 }
 
 .right-part {
+  margin-top: 1px;
   box-sizing: border-box;
   background-color: #f3f3f3;
   padding: 2rem 1rem;
@@ -138,12 +139,10 @@ button:focus-visible {
 
 .circle {
   position: absolute;
-  left: -26px;
-  top: 7px;
-  border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
-  background: gray !important;
+  display: inline;
+  left: -33px;
+  top: 0px;
+  box-sizing: border-box;
 }
 
 .contact-details {
