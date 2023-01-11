@@ -14,7 +14,7 @@ import { Loader } from "../components/Loader";
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
-  const [getID, setGetID] = useState("");
+  const [getID, setGetID] = useState(null);
   const URL = `https://pdf-creator-ecru.vercel.app/api/getPdf/${getID}`;
 
   useEffect(() => {

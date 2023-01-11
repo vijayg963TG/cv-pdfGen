@@ -19,7 +19,7 @@ export const Technology = ({ contactUs, skills, tools, langaugeSkills }) => {
       <div>
         <Title title={"Skills"} />
         <ul>
-          {data[1].map((s,i) => (
+          {data[1].filter((x)=>x.length>=2).map((s,i) => (
             <li key={i} className="textDark">{s}</li>
           ))}
         </ul>
@@ -28,7 +28,7 @@ export const Technology = ({ contactUs, skills, tools, langaugeSkills }) => {
       <div>
         <Title title={"Tools"} />
         <ul>
-          {data[2].map((s,i) => (
+          {data[2].filter((x)=>x.length>=2).map((s,i) => (
             <li key={i} className="textDark">{s}</li>
           ))}
         </ul>
@@ -37,7 +37,7 @@ export const Technology = ({ contactUs, skills, tools, langaugeSkills }) => {
       <div className="language-sec">
         <Title title={"Language Skills"} />
         <div className="language-list">
-          {data[3].map((s,i) => (
+          {data[3].filter((x)=>x.length>=2).map((s,i) => (
             <strong key={i} className="language"> - {s}</strong>
           ))}
         </div>
