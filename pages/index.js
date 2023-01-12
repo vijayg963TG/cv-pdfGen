@@ -15,14 +15,16 @@ import { Loader } from "../components/Loader";
 export default function Home() {
   const [apiData, setApiData] = useState(null);
   const [getID, setGetID] = useState(null);
-  const URL = `https://pdf-creator-ecru.vercel.app/api/getPdf/${getID}`;
+  const URL = `https://pdf-creator-omega.vercel.app/api/getPdf/${getID}`;
 
   useEffect(() => {
     setGetID(localStorage.getItem("id") || "63bd45891ce32929371313d4");
     if (window !== undefined) {
-      axios(URL)
+      if(getID){
+        axios(URL)
         .then((res) => setApiData(res.data.data))
         .catch((err) => console.error(err));
+      }
     }
   }, [getID]);
   // console.log(getID ,"Check id")

@@ -17,3 +17,19 @@
     font-size: 1.2rem;
     color: #3080c2;
 }
+
+@media screen and (max-width: 768px) {
+    .footer{
+        padding: 1rem;
+    }
+
+    .footer a{
+        font-size: 0.9rem;
+    }
+
+    .footer img{
+        padding: 0 0.8rem;
+        width: 72px;
+        height: 30px;
+    }
+}

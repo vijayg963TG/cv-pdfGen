@@ -39,5 +39,16 @@ font-size: 1.2rem;
     border: 1px solid lightgray;
     border-radius: 5px;
     }
-    
+
+    @media screen and (max-width: 768px) {
+        .container{
+            padding: 1.6rem;
+        }
+        .formBtn{
+            padding: 0;
+        }
+        .formBtn button{
+            padding: 0.6rem 1.5rem;
+        }
+      }
 

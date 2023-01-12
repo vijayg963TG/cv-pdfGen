@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/CreateCv.module.css";
-import { Formik, Form, Field } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import Link from "next/link";
@@ -9,20 +9,20 @@ const CvSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required"),
+    .required("Required Name can note be blank"),
   post: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required"),
+    .required("Required! Name can note be blank"),
   summary: Yup.string()
     .min(40, "Too Short!")
     .max(2000, "Too Long!")
-    .required("Required"),
-  education: Yup.string(),
-  projects: Yup.string().min(10, "Too Short").required("Required"),
-  skills: Yup.string().min(10, "Too Short").required("Required"),
-  tools: Yup.string().min(5, "Too Short").required("Required"),
-  langaugeSkills: Yup.string().min(5, "Too Short").required("Required"),
+    .required("Required! summary can note be blank"),
+  education: Yup.string().min(10, "Too Short!").max(2000, "Too Long!"),
+  projects: Yup.string().min(10, "Too Short").required("Required "),
+  skills: Yup.string().min(2, "Too Short").required("Required"),
+  tools: Yup.string().min(2, "Too Short").required("Required"),
+  langaugeSkills: Yup.string().min(2, "Too Short").required("Required"),
   contactUs: Yup.string().min(10, "Too Short"),
 });
 
@@ -63,11 +63,11 @@ export default function createCV() {
           // const res = await fetch("posturl", { method: "POST", body: formData });
           // Do whatever on the sever
           axios
-            .post("https://pdf-creator-ecru.vercel.app/api/createPdf", values)
+            .post("https://pdf-creator-omega.vercel.app/api/createPdf", values)
             .then((res) => localStorage.setItem("id", res.data.id))
             .catch((err) => console.error(err));
 
-            alert("Form submitted!");
+          alert("Form submitted!");
           console.log(postCV);
           // {
           //   console.log(formData.get("name"));
@@ -224,7 +224,7 @@ export default function createCV() {
             </div>
 
             <div className={styles.formBtn}>
-              <button type="submit" className={styles.submitBtn}>
+              <button type="submit" disabled={!Formik.isValid} className={styles.submitBtn}>
                 Submit
               </button>
               <Link href={"/"}>
