@@ -6,7 +6,7 @@ import {FcGoogle} from "react-icons/fc"
 
 
 export const BtnHeader = ({ id }) => {
-  console.log(id)
+  // console.log(id)
   const [loading, setloading] = useState(true);
 
   // const handleDelete = () => {

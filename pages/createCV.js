@@ -9,21 +9,21 @@ const CvSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required Name can note be blank"),
+    .required("Name can note be blank"),
   post: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required! Name can note be blank"),
+    .required("Post can note be blank"),
   summary: Yup.string()
     .min(40, "Too Short!")
     .max(2000, "Too Long!")
-    .required("Required! summary can note be blank"),
-  education: Yup.string().min(10, "Too Short!").max(2000, "Too Long!"),
-  projects: Yup.string().min(10, "Too Short").required("Required "),
-  skills: Yup.string().min(2, "Too Short").required("Required"),
-  tools: Yup.string().min(2, "Too Short").required("Required"),
-  langaugeSkills: Yup.string().min(2, "Too Short").required("Required"),
-  contactUs: Yup.string().min(10, "Too Short"),
+    .required("Summary can note be blank"),
+  education: Yup.string().min(5, "Too Short!"),
+  projects: Yup.string().min(10, "Too Short!").required("Project Can not be blank"),
+  skills: Yup.string().min(2, "Too Short!").required("Skills Can not be blank"),
+  tools: Yup.string().min(2, "Too Short!").required("Tools Can not be blank"),
+  langaugeSkills: Yup.string().min(2, "Too Short!").required("Langauge Can not be blank"),
+  contactUs: Yup.string().min(10, "Too Short!"),
 });
 
 export default function createCV() {
@@ -224,7 +224,7 @@ export default function createCV() {
             </div>
 
             <div className={styles.formBtn}>
-              <button type="submit" disabled={!Formik.isValid} className={styles.submitBtn}>
+              <button type="submit" className={styles.submitBtn}>
                 Submit
               </button>
               <Link href={"/"}>

@@ -29,6 +29,14 @@ font-weight: 500;
 font-size: 1.2rem;
 }
 
+.formgroup p {
+    color:  crimson;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
 .formgroup textarea, .formgroup input{
     width: 98%;
     display: block;
